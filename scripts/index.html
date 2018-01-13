@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Book App</title>
+    <!-- stretch goal  -->
+    <script id="error-template" type="text/x-handlebars-template">
+    
+    </script>
+</head>
+<body>
+    <h1>Ahoy</h1>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <!-- <script src ="[https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script> -->
+
+<section class="container">
+    <ul id="book-list">
+        <!-- books go here -->
+    </ul>
+    <h2 id ="book-count"></h2>
+</section>
+
+ <section class= "error-view container">
+     <h1 id="error-massage">Error!!!!</h1>
+ </section>
+
+
+<script>
+    var __API_URL__ = 'localhost:3000/api/v1/books'
+
+    $('.error-view').hide()
+
+    $.getJSON(__API_URL__).then(books => {
+        books.forEach(bookData => {
+            $('#book-list').append(`<li>${bookData.title}:${bookData.author}</li>`)
+        })
+
+        $('#book-count').html(books.length)
+    })
+    
+    // stretch goal
+    var errorView = {}
+
+    errorView.initErrorPage = (err) => {
+        //does error stuff
+        $('.container').hide()
+        $('.error-view').show()
+        $('#error-message').empty()
+
+        err = {status:'lousy', status:'not good'}
+
+        const template = Handlebars.compile($('#error-template').text())
+
+        $('#error-message').append(template(err))
+    }
+</script>
+
+</body>
+</html>
