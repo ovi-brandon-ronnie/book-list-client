@@ -1,9 +1,15 @@
 'use strict';
 
+// var __API_URL__ = 'http://localhost:3004';
 var __API_URL__ = 'https://op-bb-rl-booklist.herokuapp.com';
 var app = app || {};
 
 (function (module) {
+
+  function errorCallback(err) {
+    console.error(err);
+    module.errorView.initErrorPage(err);
+  }
 
   function Book(bookId, title, author, imageURL) {
     this.bookId = bookId;
@@ -16,19 +22,26 @@ var app = app || {};
 
   Book.fetchAll = callback => {
     $.get(`${__API_URL__}/api/v1/books`)
-      .then(callback)
-      .catch(() => console.log('error has occurred'));
+      .then(books => {
+        books.forEach(bookData => {
+          $('#book-list').append(`<li>${bookData.title} : ${bookData.author}</li>`);
+        });
+        $('#book-count').html(books.length);
+      })
+      .catch(() => console.log('error has occurred fetching all the books'));
   };
 
-  $.getJSON(`${__API_URL__}/api/v1/books`).then(books => {
-    books.forEach(bookData => {
-      $('#book-list').append(`<li>${bookData.title} : ${bookData.author}</li>`);
-    });
-    $('#book-count').html(books.length);
-  
-  });
+  Book.fetchOne = id => {
+    $.get(`${__API_URL__}/api/v1/books/${id}`)
+      .then(results => console.log(results));
+  };
 
-  // Book.fetchOne = (id) => $.getJSON(__API_URL__ + '/' + id)
+
+  Book.create = book => {
+    return $.post(`${__API_URL__}/api/v1/books`, book).catch(() => console.log('An error has occurred'));
+  };
+
+
 
   module.Book = Book;
 
