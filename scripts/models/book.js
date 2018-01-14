@@ -1,6 +1,7 @@
 'use strict';
 
-var __API_URL__ = 'https://op-bb-rl-booklist.herokuapp.com';
+var __API_URL__ = 'http://localhost:3004';
+// var __API_URL__ = 'https://op-bb-rl-booklist.herokuapp.com';
 var app = app || {};
 
 (function (module) {
@@ -16,19 +17,19 @@ var app = app || {};
 
   Book.fetchAll = callback => {
     $.get(`${__API_URL__}/api/v1/books`)
-      .then(callback)
+      .then(books => {
+        books.forEach(bookData => {
+          $('#book-list').append(`<li>${bookData.title} : ${bookData.author}</li>`);
+        });
+        $('#book-count').html(books.length);
+      })
       .catch(() => console.log('error has occurred'));
   };
 
-  $.getJSON(`${__API_URL__}/api/v1/books`).then(books => {
-    books.forEach(bookData => {
-      $('#book-list').append(`<li>${bookData.title} : ${bookData.author}</li>`);
-    });
-    $('#book-count').html(books.length);
-  
-  });
-
-  // Book.fetchOne = (id) => $.getJSON(__API_URL__ + '/' + id)
+  Book.fetchOne = (id) => {
+    $.get(`${__API_URL__}/api/v1/books/${id}`)
+      .then(results => console.log(results));
+  };
 
   module.Book = Book;
 

@@ -5,18 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Book App</title>
+
+    <link rel="stylesheet" href="./styles/reset.css">
+    <link rel="stylesheet" href="./styles/icons.css">
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/layout.css">
+    <link rel="stylesheet" href="./styles/modules/error.css">
+    <link rel="stylesheet" href="./styles/modules/header.css">
+    <link rel="stylesheet" href="./styles/modules/book-main.css">
+    <link rel="stylesheet" href="./styles/modules/detail-main.css">
+    <link rel="stylesheet" href="./styles/modules/form-main.css">
+    <link rel="stylesheet" href="./styles/modules/admin-main.css">
+    <link rel="stylesheet" href="./styles/modules/footer.css">
 </head>
 <body>
     <h1>Ahoy</h1>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-    <script src="/scripts/models/book.js"></script>
 
 <section class="container">
     <ul id="book-list"></ul>
     <h2 id="book-count"></h2>
 </section>
+
+<section id="book-detail-view" class="page">
+
+</section>
+
+<section id="book-create-view" class="page">
+<form action="" method="post">
+        <label for="POST-title">Title:</label>
+        <input id="POST-name" type="text" name="name">
+        <input type="submit" value="Save">
+
+</section>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+<script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
+
+<script src="scripts/views/book-list-view.js"></script>
+<script src="scripts/views/book-detail-view.js"></script>
+<script src="scripts/views/book-create-view.js"></script>
+<script src="scripts/views/book-update-view.js"></script>
+<script src="scripts/views/error-view.js"></script>
+<script src="scripts/views/admin-view.js"></script>
+
+<script src="scripts/models/book.js"></script>
+<script src="scripts/controllers/routes.js"></script>
+
+<script src="scripts/models/book.js"></script>
+<script src="scripts/controllers/routes.js"></script>
+
 <script>app.Book.fetchAll();</script>
 </body>
 </html>
