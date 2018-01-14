@@ -1,3 +1,7 @@
+page('/*', (ctx, next) => {
+	$('.page').hide()
+	next()
+})
 
 page('/', () => {
 	$('.page').hide()
@@ -10,8 +14,12 @@ page('/books/:id', (ctx) => {
 	app.Book.fetchOne(ctx.params.id).then(book => {
 		app.bookDetailsPage.init(book)	
 })
-page('/book/create', () => {
+page('/book/new', () => {
 	$('.page').hide()
-	$('#book-create-view').show()
+	$('#book-new-view').show()
+})
+page('/error', () => {
+	$('.page').hide()
+	$('#error-page').show()
 })
 page.start()

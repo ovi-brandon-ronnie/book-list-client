@@ -21,22 +21,51 @@
 <body>
     <h1>Ahoy</h1>
 
-<section class="container">
-    <ul id="book-list"></ul>
-    <h2 id="book-count"></h2>
-</section>
+    <header>
+        <div class="header-content">
+            <a href="/"><img src="http://www.bootcamps.in/wp-content/uploads/2015/06/code-fellows-shield.png" alt="logo"></a>
+            <h1>Code Fellows Books</h1>
+            <div class="icon-menu"></div>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="/">home</a></li>
+                <li><a href="/books/new">add book</a></li>
+                <li><a href="/login">login</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<section id="book-detail-view" class="page">
+    <main>
+        <section class="container">
+            <ul id="book-list"></ul>
+            <h2 id="book-count"></h2>
+        </section>
 
-</section>
+        <section id="book-detail-view" class="page">
+        </section>
 
-<section id="book-create-view" class="page">
-<form action="" method="post">
-        <label for="POST-title">Title:</label>
-        <input id="POST-name" type="text" name="name">
-        <input type="submit" value="Save">
+        <section id="book-new-view" class="page">
+            <form id="newBookForm">
+                <label for="title">Title:</label>
+                <input id="title" type="text" name="Title" placeholder="Title of the book"><br>
 
-</section>
+                <label for="author">Author:</label>
+                <input id="author" type="text" name="Author" placeholder="Author's name"><br>
+
+                <label for="isbn">ISBN:</label>        
+                <input id="isbn" type="text" name="ISBN" placeholder="ISBN of the book"><br>
+
+                <label for="imageUrl">Image URL:</label>
+                <input id="imageUrl" type="text" name="ImageUrl" placeholder="Image url"><br>
+
+                <label for="description">Description</label>      
+                <textarea id="description" name="description" placeholder="Enter a description for the book"></textarea></textarea><br>
+
+                <input type="submit" value="Submit">
+            </form>
+        </section>
+    </main>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 crossorigin="anonymous"></script>
@@ -45,10 +74,11 @@ crossorigin="anonymous"></script>
 
 <script src="scripts/views/book-list-view.js"></script>
 <script src="scripts/views/book-detail-view.js"></script>
-<script src="scripts/views/book-create-view.js"></script>
+<script src="scripts/views/book-new-view.js"></script>
 <script src="scripts/views/book-update-view.js"></script>
 <script src="scripts/views/error-view.js"></script>
 <script src="scripts/views/admin-view.js"></script>
+<script src="scripts/views/new-book-view.js"></script>
 
 <script src="scripts/models/book.js"></script>
 <script src="scripts/controllers/routes.js"></script>

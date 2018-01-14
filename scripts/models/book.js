@@ -1,10 +1,15 @@
 'use strict';
 
-var __API_URL__ = 'http://localhost:3004';
-// var __API_URL__ = 'https://op-bb-rl-booklist.herokuapp.com';
+// var __API_URL__ = 'http://localhost:3004';
+var __API_URL__ = 'https://op-bb-rl-booklist.herokuapp.com';
 var app = app || {};
 
 (function (module) {
+
+  function errorCallback(err) {
+    console.error(err);
+    module.errorView.initErrorPage(err);
+  }
 
   function Book(bookId, title, author, imageURL) {
     this.bookId = bookId;
@@ -23,13 +28,20 @@ var app = app || {};
         });
         $('#book-count').html(books.length);
       })
-      .catch(() => console.log('error has occurred'));
+      .catch(() => console.log('error has occurred fetching all the books'));
   };
 
-  Book.fetchOne = (id) => {
+  Book.fetchOne = id => {
     $.get(`${__API_URL__}/api/v1/books/${id}`)
       .then(results => console.log(results));
   };
+
+
+  Book.create = book => {
+    return $.post(`${__API_URL__}/api/v1/books`, book).catch(() => console.log('An error has occurred'));
+  };
+
+
 
   module.Book = Book;
 
