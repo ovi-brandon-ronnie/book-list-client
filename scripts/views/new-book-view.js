@@ -7,13 +7,17 @@ $('#newBookForm').on('submit', (e) => {
     var description = $('#description').val();
 
     let book = new app.Book (title, author, isbn, imgUrl, description);
-    app.Book.create(book);
+    app.Book.create(book)
+    .then( () => {
+        clearFields();
+    });
 });
 
-// function Book(bookId, title, author, imageURL, description) {
-//     this.bookId = bookId;
-//     this.title = title;
-//     this.author = author;
-//     this.imageURL = imageURL;
-//     this.description = description;
-//   }
+
+function clearFields() {
+    $('#title').val("");
+    $('#author').val("");
+    $('#isbn').val("");
+    $('#imgUrl').val("");
+    $('#description').val("");
+}

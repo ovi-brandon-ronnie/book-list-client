@@ -1,21 +1,22 @@
 'use strict';
 
-// var __API_URL__ = 'http://localhost:3004';
-var __API_URL__ = 'https://op-bb-rl-booklist.herokuapp.com';
+var __API_URL__ = 'http://localhost:3000';
+// var __API_URL__ = 'https://op-bb-rl-booklist.herokuapp.com';
 var app = app || {};
 
 (function (module) {
 
-  function errorCallback(err) {
-    console.error(err);
-    module.errorView.initErrorPage(err);
-  }
+  // function errorCallback(err) {
+  //   console.error(err);
+  //   module.errorView.initErrorPage(err);
+  // }
 
-  function Book(bookId, title, author, imageURL) {
-    this.bookId = bookId;
-    this.title = title;
-    this.author = author;
-    this.imageURL = imageURL;
+  function Book(title, author, isbn, imageURL, description) {
+    this.title = title,
+    this.author = author,
+    this.isbn = isbn,
+    this.imageURL = imageURL,
+    this.description = description;
   }
 
   Book.all = [];
@@ -27,6 +28,7 @@ var app = app || {};
           $('#book-list').append(`<li>${bookData.title} : ${bookData.author}</li>`);
         });
         $('#book-count').html(books.length);
+        callback;
       })
       .catch(() => console.log('error has occurred fetching all the books'));
   };
