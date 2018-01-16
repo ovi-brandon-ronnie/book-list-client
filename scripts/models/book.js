@@ -1,6 +1,6 @@
 'use strict';
 
-//var __API_URL__ = 'http://localhost:3000';
+// var __API_URL__ = 'http://localhost:3000';
 var __API_URL__ = 'https://op-bb-rl-booklist.herokuapp.com';
 var app = app || {};
 
@@ -24,8 +24,8 @@ var app = app || {};
   Book.fetchAll = callback => {
     $.get(`${__API_URL__}/api/v1/books`)
       .then(books => {
+        $('#book-list').empty();                        
         books.forEach(bookData => {
-          $('#book-list').empty();
           $('#book-list').append(`<li>${bookData.title} : ${bookData.author}</li>`);
         });
         $('#book-count').html(books.length);
