@@ -10,13 +10,13 @@
     <link rel="stylesheet" href="./styles/icons.css">
     <link rel="stylesheet" href="./styles/base.css">
     <link rel="stylesheet" href="./styles/layout.css">
-    <link rel="stylesheet" href="./styles/modules/error.css">
+    <!-- <link rel="stylesheet" href="./styles/modules/error.css">
     <link rel="stylesheet" href="./styles/modules/header.css">
     <link rel="stylesheet" href="./styles/modules/book-main.css">
     <link rel="stylesheet" href="./styles/modules/detail-main.css">
     <link rel="stylesheet" href="./styles/modules/form-main.css">
     <link rel="stylesheet" href="./styles/modules/admin-main.css">
-    <link rel="stylesheet" href="./styles/modules/footer.css">
+    <link rel="stylesheet" href="./styles/modules/footer.css"> -->
 </head>
 <body>
     <header>
@@ -35,7 +35,7 @@
     </header>
 
     <main>
-        <section class="container">
+        <section id="container" class="page">
             <ul id="book-list"></ul>
             <h2 id="book-count"></h2>
         </section>
@@ -70,20 +70,16 @@ crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
 
-<script src="scripts/views/book-list-view.js"></script>
+<!-- <script src="scripts/views/book-list-view.js"></script>
 <script src="scripts/views/book-detail-view.js"></script>
 <script src="scripts/views/book-new-view.js"></script>
-<script src="scripts/views/book-update-view.js"></script>
+<script src="scripts/views/book-update-view.js"></script> -->
 <script src="scripts/views/error-view.js"></script>
-<script src="scripts/views/admin-view.js"></script>
+<!-- <script src="scripts/views/admin-view.js"></script> -->
 <script src="scripts/views/new-book-view.js"></script>
 
 <script src="scripts/models/book.js"></script>
-<script src="scripts/controllers/routes.js"></script>
+<script src="scripts/views/routes.js"></script>
 
-<script src="scripts/models/book.js"></script>
-<script src="scripts/controllers/routes.js"></script>
-
-<script>app.Book.fetchAll();</script>
 </body>
 </html>

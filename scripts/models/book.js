@@ -1,7 +1,7 @@
 'use strict';
 
-var __API_URL__ = 'http://localhost:3000';
-// var __API_URL__ = 'https://op-bb-rl-booklist.herokuapp.com';
+//var __API_URL__ = 'http://localhost:3000';
+var __API_URL__ = 'https://op-bb-rl-booklist.herokuapp.com';
 var app = app || {};
 
 (function (module) {
@@ -28,7 +28,10 @@ var app = app || {};
           $('#book-list').append(`<li>${bookData.title} : ${bookData.author}</li>`);
         });
         $('#book-count').html(books.length);
-        callback;
+        return books;
+      })
+      .then(data => {
+        callback(data);
       })
       .catch(() => console.log('error has occurred fetching all the books'));
   };
