@@ -5,11 +5,10 @@ page('/*', (ctx, next) => {
 
 // home / fetch all books
 page('/', () => {
-  $('.page').hide();
+  $('.page').hide(); 
   app.Book.fetchAll( books => {
-    console.log(books);
+    $('#container').show(); 
   });
-  $('#container').show();
 });
 
 // add a new book

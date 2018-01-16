@@ -25,6 +25,7 @@ var app = app || {};
     $.get(`${__API_URL__}/api/v1/books`)
       .then(books => {
         books.forEach(bookData => {
+          $('#book-list').empty();
           $('#book-list').append(`<li>${bookData.title} : ${bookData.author}</li>`);
         });
         $('#book-count').html(books.length);
